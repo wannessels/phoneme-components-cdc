@@ -40,9 +40,9 @@ LINK_ARCH_LIBS		= -lm
 # assume the JIT is enabled for this device unless told otherwise
 CVM_JIT ?= true
 # assume floating point hardware on this device unless told otherwise
-CVM_JIT_USE_FP_HARDWARE ?= true
+# NO FLOATING POINT HARDWARE
+CVM_JIT_USE_FP_HARDWARE ?= false
 
-CVM_TARGET_TOOLS_PREFIX ?= \
-	/opt/OpenWRT/toolchain-mipsel_gcc4.1.2/bin/mipsel-linux-uclibc-
+CVM_TARGET_TOOLS_PREFIX ?= /home/wannes/carambola2/staging_dir/toolchain-mips_34kc_gcc-4.8-linaro_uClibc-0.9.33.2/bin/mips-openwrt-linux-uclibc-
 
 include ../share/top.mk

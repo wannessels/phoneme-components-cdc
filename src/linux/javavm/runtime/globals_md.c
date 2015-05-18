@@ -185,11 +185,14 @@ CVMBool CVMinitStaticState(CVMpathInfo *pathInfo)
 
     linuxNetInit();
 
-    sigignore(SIGPIPE);
+    struct sigaction ignore_action;
+    ignore_action.sa_handler = SIG_IGN;
+    ignore_action.sa_flags = SA_RESTART;
+    sigaction(SIGPIPE, &ignore_action, NULL);
     
 #ifdef __VFP_FP__    
     /* TODO: Needed for armboard5. Should be moved to ARM specific code. */
-    sigignore(SIGFPE);
+    sigaction(SIGFPE, &ignore_action, NULL);
 #endif
 
     {
